@@ -26,16 +26,15 @@ const SlideEditor = () => {
   }, [id]);
 
   const handleSave = () => {
-    const method = id ? 'PUT' : 'POST';
-    const url = id ? `/slides/${id}` : '/slides';
-
-    api({
-      method,
-      url,
-      data: { title, content, layout },
-    })
+    if (id) {
+      api.put(`/slides/${id}`, { title, content, layout })
       .then(() => navigate('/'))
       .catch((error) => console.error("Error saving slide:", error));
+    } else {
+      api.post(`/slides`, { title, content, layout })
+      .then(() => navigate('/'))
+      .catch((error) => console.error("Error saving slide:", error));
+    }
   };
 
   // Render code blocks with syntax highlighting using react-syntax-highlighter
