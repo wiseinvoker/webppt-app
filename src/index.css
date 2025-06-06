@@ -109,6 +109,29 @@ code {
   background-color: #0056b3;
 }
 
+.button-area {
+  display: flex;
+  justify-content: space-around;
+  width: 80%;
+  margin-left: 10%;
+}
+
+.home-button {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1.2rem;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.home-button:hover {
+  background-color: #0056b3;
+}
+
 .create-slide-button {
   display: inline-block;
   padding: 12px 24px;
@@ -116,7 +139,7 @@ code {
   color: #fff;
   border-radius: 5px;
   text-decoration: none;
-  font-weight: bold;
+  font-size: 1.2rem;
   text-align: center;
   transition: background-color 0.3s ease;
 }
@@ -151,8 +174,9 @@ code {
 /* Slide Editor Styling */
 .slide-editor-container {
   max-width: 900px;
+  height: calc(100vh - 40px);
   margin: 0 auto;
-  padding: 40px;
+  padding: 20px;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -223,7 +247,6 @@ button:hover {
   padding: 12px 24px;
   background-color: #28a745;
   color: white;
-  font-weight: bold;
   border: none;
   border-radius: 5px;
   cursor: pointer;

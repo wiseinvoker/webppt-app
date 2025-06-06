@@ -1,7 +1,8 @@
 // frontend/src/components/SlideEditor.js
 import React, { useState, useEffect } from 'react';
-import api from '../api/axios';
+import { Link } from 'react-router-dom';
 import { useParams, useNavigate } from 'react-router-dom';
+import api from '../api/axios';
 // import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 // import { solarizedlight } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -78,7 +79,10 @@ const SlideEditor = () => {
           </select>
         </div>
 
-        <button type="submit" className="save-slide-button">Save Slide</button>
+        <div className='button-area'>
+          <Link className="home-button" to={`/`}>Back to home</Link>
+          <button type="submit" className="save-slide-button">Save Slide</button>
+        </div>
       </form>
     </div>
   );
