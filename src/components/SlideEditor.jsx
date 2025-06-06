@@ -75,7 +75,7 @@ const SlideEditor = () => {
             onChange={(e) => setLayout(e.target.value)}
           >
             <option value="default">Default</option>
-            <option value="image">Image</option>
+            <option value="center">Center</option>
           </select>
         </div>
 

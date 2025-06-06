@@ -76,12 +76,8 @@ code {
   flex-grow: 1;
 }
 
-.slide-content {
-  text-align: center;
-}
-
-.slideshow-title {
-  font-style: italic;
+.slide-content-center {
+  text-align: center !important;
 }
 
 .markdown-content {
@@ -256,12 +252,6 @@ button:hover {
 
 .save-slide-button:hover {
   background-color: #218838;
-}
-
-.slideshow-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 /* Flex Layout for Slide Title and Edit Button */

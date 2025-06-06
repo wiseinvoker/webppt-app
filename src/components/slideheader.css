@@ -1,0 +1,10 @@
+/* slideheader.css */
+.slideshow-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.slideshow-title {
+  font-style: italic;
+}

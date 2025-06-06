@@ -7,6 +7,11 @@ import remark2react from 'remark-react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { solarizedlight } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import api from '../api/axios';
+import { SlideHeader } from '../components/SlideHeader';
+import SlideContent from '../components/SlideContent';
+import ProgressBar from '../components/ProgressBar';
+import ProgressText from '../components/ProgressText';
+import SlideNavigation from '../components/SlideNavigation';
 
 const SlideShow = () => {
     const [slides, setSlides] = useState([]);
@@ -47,11 +52,11 @@ const SlideShow = () => {
     // Custom renderer for code blocks (for syntax highlighting)
     const customRenderers = {
         code: ({ language, value }) => {
-        return (
-            <SyntaxHighlighter language={language} style={solarizedlight}>
-            {value}
-            </SyntaxHighlighter>
-        );
+            return (
+                <SyntaxHighlighter language={language} style={solarizedlight}>
+                    {value}
+                </SyntaxHighlighter>
+            );
         },
     };
 
@@ -69,38 +74,18 @@ const SlideShow = () => {
 
     return (
         <div className="slideshow-container">
-            <div className='slideshow-header'>
-                <h1 className="slideshow-title">Presentation</h1>
-                <Link to="/create" className="btn btn-primary">New Slide</Link>
-            </div>
-            
+            <SlideHeader />
+
             {slide ? (
                 <div className='content-area'>
-                <div className="slide-content">
-                    <div className="slide-header">
-                        <h2 className="slide-title">{slide.title}</h2>
-                    </div>
-                    
-                    <div className="markdown-content">
-                        {parseMarkdownToAST(slide.content)}
+                    <SlideContent slide={slide} parseMarkdownToAST={parseMarkdownToAST}/>
+                    <div className='navigation'>
+                        <SlideNavigation slide={slide} handleNext={handleNext} handlePrev={handlePrev} />
+                        <ProgressBar currentSlide={currentSlide} slides={slides} />
+                        <ProgressText currentSlide={currentSlide} slides={slides} />
                     </div>
                 </div>
-                <div className='navigation'>
-                        <div className="slide-navigation">
-                            <button className="nav-button" onClick={handlePrev}>&#8810;</button>
-                            <Link className="create-slide-button" to={`/edit/${slide.id}`}>Edit</Link>
-                            <button className="nav-button" onClick={handleNext}>&#8811;</button>
-                        </div>
-                        <div className="progress-bar-container">
-                            <div className="progress-bar" style={{ width: `${((currentSlide + 1) / slides.length) * 100}%` }}></div>
-                        </div>
 
-                        <div className="progress-text">
-                            Slide {currentSlide + 1} of {slides.length}
-                        </div>
-                    </div>
-                </div>
-                
             ) : (
                 <p>Loading slides...</p>
             )}
