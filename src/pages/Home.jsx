@@ -1,11 +1,8 @@
-// frontend/src/components/SlideShow.js
+// frontend/src/components/Home.js
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { unified } from 'unified';
 import markdown from 'remark-parse';
 import remark2react from 'remark-react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { solarizedlight } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import api from '../api/axios';
 import { SlideHeader } from '../components/SlideHeader';
 import SlideContent from '../components/SlideContent';
@@ -13,7 +10,7 @@ import ProgressBar from '../components/ProgressBar';
 import ProgressText from '../components/ProgressText';
 import SlideNavigation from '../components/SlideNavigation';
 
-const SlideShow = () => {
+const Home = () => {
     const [slides, setSlides] = useState([]);
     const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -49,17 +46,6 @@ const SlideShow = () => {
 
     const slide = slides[currentSlide];
 
-    // Custom renderer for code blocks (for syntax highlighting)
-    const customRenderers = {
-        code: ({ language, value }) => {
-            return (
-                <SyntaxHighlighter language={language} style={solarizedlight}>
-                    {value}
-                </SyntaxHighlighter>
-            );
-        },
-    };
-
     // Parse markdown content to AST using remark
     const parseMarkdownToAST = (markdownText) => {
         return unified()
@@ -67,7 +53,6 @@ const SlideShow = () => {
             .use(remark2react,
                 {
                     createElement: React.createElement,
-                    components: customRenderers,
                 }) // convert the AST to React components
             .processSync(markdownText).result;
     };
@@ -78,7 +63,7 @@ const SlideShow = () => {
 
             {slide ? (
                 <div className='content-area'>
-                    <SlideContent slide={slide} parseMarkdownToAST={parseMarkdownToAST}/>
+                    <SlideContent slide={slide} parseMarkdownToAST={parseMarkdownToAST} />
                     <div className='navigation'>
                         <SlideNavigation slide={slide} handleNext={handleNext} handlePrev={handlePrev} />
                         <ProgressBar currentSlide={currentSlide} slides={slides} />
@@ -93,4 +78,4 @@ const SlideShow = () => {
     );
 };
 
-export default SlideShow;
+export default Home;
