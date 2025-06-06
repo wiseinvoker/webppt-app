@@ -144,22 +144,7 @@ code {
   background-color: #218838;
 }
 
-/* Progress Bar */
-.progress-bar-container {
-  width: 80%;
-  height: 8px;
-  margin-left: 10%;
-  background-color: #ddd;
-  border-radius: 4px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
 
-.progress-bar {
-  height: 100%;
-  background-color: #007bff;
-  border-radius: 4px;
-}
 
 .progress-text {
   text-align: center;

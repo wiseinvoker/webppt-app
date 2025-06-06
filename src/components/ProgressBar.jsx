@@ -1,3 +1,4 @@
+import './progressbar.css';
 const ProgressBar = ({ currentSlide, slides }) => {
   const progress = ((currentSlide + 1) / slides.length) * 100;
 
