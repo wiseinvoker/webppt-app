@@ -37,15 +37,6 @@ const SlideEditor = () => {
     }
   };
 
-  // Render code blocks with syntax highlighting using react-syntax-highlighter
-//   const renderCodeBlock = (language, value) => {
-//     return (
-//       <SyntaxHighlighter language={language} style={solarizedlight}>
-//         {value}
-//       </SyntaxHighlighter>
-//     );
-//   };
-
   return (
     <div className="slide-editor-container">
       <h1 className='slide-edit-header'>{id ? 'Edit' : 'Create'} Slide</h1>

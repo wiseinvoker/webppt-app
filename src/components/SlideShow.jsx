@@ -69,33 +69,38 @@ const SlideShow = () => {
 
     return (
         <div className="slideshow-container">
-            <div className='slide-header'>
+            <div className='slideshow-header'>
                 <h1 className="slideshow-title">Presentation</h1>
                 <Link to="/create" className="btn btn-primary">New Slide</Link>
             </div>
             
             {slide ? (
+                <div className='content-area'>
                 <div className="slide-content">
                     <div className="slide-header">
                         <h2 className="slide-title">{slide.title}</h2>
-                        <Link className="create-slide-button" to={`/edit/${slide.id}`}>Edit</Link>
                     </div>
                     
                     <div className="markdown-content">
                         {parseMarkdownToAST(slide.content)}
                     </div>
-                    <div className="slide-navigation">
-                        <button className="nav-button" onClick={handlePrev}>&#8810;</button>
-                        <button className="nav-button" onClick={handleNext}>&#8811;</button>
-                    </div>
-                    <div className="progress-bar-container">
-                        <div className="progress-bar" style={{ width: `${((currentSlide + 1) / slides.length) * 100}%` }}></div>
-                    </div>
+                </div>
+                <div className='navigation'>
+                        <div className="slide-navigation">
+                            <button className="nav-button" onClick={handlePrev}>&#8810;</button>
+                            <Link className="create-slide-button" to={`/edit/${slide.id}`}>Edit</Link>
+                            <button className="nav-button" onClick={handleNext}>&#8811;</button>
+                        </div>
+                        <div className="progress-bar-container">
+                            <div className="progress-bar" style={{ width: `${((currentSlide + 1) / slides.length) * 100}%` }}></div>
+                        </div>
 
-                    <div className="progress-text">
-                        Slide {currentSlide + 1} of {slides.length}
+                        <div className="progress-text">
+                            Slide {currentSlide + 1} of {slides.length}
+                        </div>
                     </div>
                 </div>
+                
             ) : (
                 <p>Loading slides...</p>
             )}

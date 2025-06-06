@@ -15,7 +15,7 @@ h1, h2 {
 h1 {
   font-size: 2.5rem;
   color: #333;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 h2 {
@@ -52,6 +52,10 @@ code {
 /* Centered Layout for Slide Content */
 .slideshow-container {
   max-width: 900px;
+  height: calc(100vh - 40px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   margin: 0 auto;
   padding: 20px;
   background-color: #fff;
@@ -59,9 +63,25 @@ code {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+.slide-navigation {
+  display: flex;
+  justify-content: space-around;
+  padding: 0 30px;
+}
+
+.content-area {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
 .slide-content {
   text-align: center;
-  margin-bottom: 20px;
+}
+
+.slideshow-title {
+  font-style: italic;
 }
 
 .markdown-content {
@@ -98,7 +118,6 @@ code {
   text-decoration: none;
   font-weight: bold;
   text-align: center;
-  margin-top: 20px;
   transition: background-color 0.3s ease;
 }
 
@@ -108,12 +127,13 @@ code {
 
 /* Progress Bar */
 .progress-bar-container {
-  width: 100%;
+  width: 80%;
   height: 8px;
+  margin-left: 10%;
   background-color: #ddd;
   border-radius: 4px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .progress-bar {
@@ -144,11 +164,11 @@ code {
 
 .slide-editor-form {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   text-align: left;
   max-width: 500px;
   margin-left: auto;
@@ -215,12 +235,17 @@ button:hover {
   background-color: #218838;
 }
 
+.slideshow-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 /* Flex Layout for Slide Title and Edit Button */
 .slide-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
 }
 
 .slide-title {
