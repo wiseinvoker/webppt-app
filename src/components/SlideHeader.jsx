@@ -3,7 +3,7 @@ import './slideheader.css';
 
 export const SlideHeader = () => (
     <div className='slideshow-header'>
-        <h1 className="slideshow-title">Presentation</h1>
+        <h1 className="slideshow-title">MarkdownPPT</h1>
         <a href="/create">New Slide</a>
     </div>
 );
