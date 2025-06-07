@@ -1,6 +1,6 @@
-import React from 'react';
+import MarkdownRenderer from "./MarkdownRenderer";
 
-const SlideContent = ({ slide, parseMarkdownToAST }) => {
+const SlideContent = ({ slide }) => {
   return (
     <div className="slide-content-center">
       <div className="slide-header">
@@ -8,7 +8,7 @@ const SlideContent = ({ slide, parseMarkdownToAST }) => {
       </div>
 
       <div className={`markdown-content ${slide.layout == 'center' ? 'slide-content-center' : ''}`}>
-        {parseMarkdownToAST(slide.content)}
+        <MarkdownRenderer markdown={slide.content} />
       </div>
     </div>
   );

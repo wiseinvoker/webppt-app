@@ -1,8 +1,5 @@
 // frontend/src/components/Home.js
-import React, { useState, useEffect } from 'react';
-import { unified } from 'unified';
-import markdown from 'remark-parse';
-import remark2react from 'remark-react';
+import { useState, useEffect } from 'react';
 import api from '../api/axios';
 import { SlideHeader } from '../components/SlideHeader';
 import SlideContent from '../components/SlideContent';
@@ -46,24 +43,12 @@ const Home = () => {
 
     const slide = slides[currentSlide];
 
-    // Parse markdown content to AST using remark
-    const parseMarkdownToAST = (markdownText) => {
-        return unified()
-            .use(markdown) // parse the markdown text
-            .use(remark2react,
-                {
-                    createElement: React.createElement,
-                }) // convert the AST to React components
-            .processSync(markdownText).result;
-    };
-
     return (
         <div className="slideshow-container">
             <SlideHeader />
-
             {slide ? (
                 <div className='content-area'>
-                    <SlideContent slide={slide} parseMarkdownToAST={parseMarkdownToAST} />
+                    <SlideContent slide={slide} />
                     <div className='navigation'>
                         <SlideNavigation slide={slide} handleNext={handleNext} handlePrev={handlePrev} />
                         <ProgressBar currentSlide={currentSlide} slides={slides} />
