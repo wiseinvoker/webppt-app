@@ -1,10 +1,118 @@
 /* General Styling */
+:root {
+  --primary: #fafafa;
+  --text-color: #222;
+  --bkg-color: #fafafa;
+  --alt-bk-color: #f6f6f6;
+  --anchor-color: #0033cc;
+  --alt-border-color: #e9e9e9;
+  --controls-bk-color: rgb(241 241 241 / 85%);
+}
+
 body {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  overflow: hidden;
+  font-family: 'STIX Two Text', sans-serif;
+  font-size: 24px;
+  color: var(--text-color);
+  background: var(--bkg-color);
   margin: 0;
   padding: 0;
-  background-color: #f4f4f9;
-  color: #333;
+}
+
+a {
+  color: var(--anchor-color);
+}
+
+@keyframes fadeInAnimation {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+   }
+}
+
+header {
+ /* height: 4vh; */
+ margin: 0.75rem;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 13% 53% 34%;
+  height: 95vh;
+}
+
+nav {
+  max-height: 90vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  animation: fadeInAnimation ease .25s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  word-wrap: anywhere;
+}
+
+nav ol {
+  padding: 0;
+  list-style: none;
+  margin-top: 0;
+}
+
+nav li {
+  margin: 0.75rem 0;
+  scroll-snap-align: start;
+  counter-increment: step-counter;
+  position: relative;
+}
+nav .button-container {
+  bottom: 0;
+  margin: 3rem;
+  background-color: white;
+}
+
+nav .button-container button {
+  border: 3px solid #e0e0e0;
+}
+
+li .title:before {
+  color: var(--text-color);
+  opacity: .5;
+  content: counter(step-counter);
+  transform: translateX(-20px);
+  min-width: 25px;
+}
+
+.title {
+  padding: 10px;
+  margin: 0 1rem 0 10px;
+  border-radius: 10px;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  border: 3px solid var(--alt-border-color);
+  overflow: hidden;
+  padding-left: 2.5rem;
+  padding-bottom: 0.5em;
+}
+
+nav h2, 
+nav h1 {
+  font-weight: 500;
+  display: inline-block;
+  padding: 5px;
+  margin: 5px 5px 5px 0;
+  font-size: 14px;
+  line-height: 1.5;
+  max-height: 2.5em;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.title:hover {
+  cursor: pointer;
 }
 
 /* Typography */
@@ -38,24 +146,28 @@ pre {
   overflow-x: auto;
 }
 
-/* Centered Layout for Slide Content */
 .slideshow-container {
-  max-width: 900px;
-  height: calc(100vh - 40px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin: 0 auto;
   padding: 20px;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+.current-slide  {
+  border: 3px solid #0078FF;
+}
+
+textarea#md-content {
+  height: 100%;
+  margin-top: 0;
+}
+
 .slide-navigation {
   display: flex;
-  justify-content: space-around;
-  padding: 0 30px;
+  padding: 0;
 }
 
 .content-area {
@@ -63,6 +175,8 @@ pre {
   flex-direction: column;
   justify-content: space-between;
   flex-grow: 1;
+  padding: 20px;
+  background-color: white;
 }
 
 .slide-content-center {
@@ -81,7 +195,7 @@ pre {
 
 .nav-button {
   padding: 10px 20px;
-  margin: 0 20px;
+  margin: 0 5px;
   background-color: #007bff;
   color: #fff;
   border: none;
@@ -132,8 +246,6 @@ pre {
 .create-slide-button:hover {
   background-color: #218838;
 }
-
-
 
 .progress-text {
   text-align: center;
@@ -242,41 +354,58 @@ button:hover {
 }
 
 /* Responsive Design for Mobile */
-@media (max-width: 768px) {
-  .slideshow-container, .slide-editor-container {
-    padding: 20px;
-  }
 
-  .slide-title {
-    font-size: 1.5rem;
-  }
+@media (max-width: 1200px) {
 
-  .markdown-content {
-    font-size: 1rem;
+  body {
+    padding: .5rem;
+    box-sizing: border-box;
   }
-
-  .nav-button {
-    padding: 8px 16px;
-    font-size: 1rem;
-  }
-
-  .create-slide-button {
-    padding: 10px 20px;
-  }
-
-  .save-slide-button {
-    width: 50%;
-    padding: 12px;
-  }
-
-  button {
-    width: 20%;
-    padding: 12px;
-  }
-
-  input, textarea, select {
+  
+  .fullscreen {
     width: 100%;
-    padding: 12px;
-    font-size: 1rem;
+    padding: 0;
+  }
+
+  .title {
+    margin: 0;
+  }
+
+  nav li {
+    margin: 0;
+  }
+
+  nav ol {
+    margin-bottom: 0;
+  }
+
+  li {
+    padding-bottom: 0;
+  }
+
+  body {
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+
+  nav ol {
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  nav {
+    width: 100%;
+  }
+
+  main {
+    display: block;
+    height: 100%;
   }
 }

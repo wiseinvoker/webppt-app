@@ -52,8 +52,8 @@ function renderNode(node, index) {
   }
 }
 
-export default function MarkdownRenderer({ markdown }) {
+export default function MarkdownRenderer({ markdown, className }) {
   const tree = unified().use(remarkParse).parse(markdown);
 
-  return <div>{tree.children.map(renderNode)}</div>;
+  return <div className={className}>{tree.children.map(renderNode)}</div>;
 }
