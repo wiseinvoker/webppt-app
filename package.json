@@ -52,6 +52,7 @@
     "prop-types": "15.8.1",
     "storybook": "9.0.5",
     "vite": "^6.3.5",
+    "vite-plugin-node-polyfills": "^0.23.0",
     "vitest": "^3.2.2",
     "vitest-browser-react": "^0.1.1"
   }
