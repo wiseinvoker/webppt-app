@@ -5,6 +5,7 @@ import ProgressBar from '../components/ProgressBar';
 import ProgressText from '../components/ProgressText';
 import SlideControls from '../components/SlideControls';
 import MarkdownRenderer from '../components/MarkdownRenderer';
+import { SlideRenderer } from '../components/SlideRenderer';
 
 const Home = () => {
     const [slides, setSlides] = useState([]);
@@ -154,7 +155,8 @@ const Home = () => {
                         exitFullScreen={handleExitFullScreen}
                         fullScreenMode={fullScreenMode} />
                     <div className='content-area'>
-                        <MarkdownRenderer markdown={currentSlides[currentSlide]} />
+                        {/* <MarkdownRenderer markdown={currentSlides[currentSlide]}/> */}
+                        {currentSlides.length > 0 && <SlideRenderer slide={currentSlides[currentSlide]} />}
                         <div className='navigation'>
                             <ProgressBar currentSlide={currentSlide} slides={slides} />
                             <ProgressText currentSlide={currentSlide} slides={slides} />

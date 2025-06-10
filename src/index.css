@@ -353,6 +353,26 @@ button:hover {
   flex-grow: 1;
 }
 
+.title-slide {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-only-slide > div > h1, .title-only-slide > div > h2 {
+  margin-left: 30px;
+}
+
+.blank-slide {
+  margin-left: 0;
+}
+
+
+.default-slide > div {
+  margin-left: 30px;
+}
+
 /* Responsive Design for Mobile */
 
 @media (max-width: 1200px) {
